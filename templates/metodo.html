@@ -1,0 +1,51 @@
+<section id="metodo" class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="text-primary fw-bold small text-uppercase">Optimización</p>
+            <h2 class="fw-bold">Método del Codo</h2>
+        </div>
+        
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="card border-0 shadow-sm overflow-hidden bg-white">
+                    <img src="data:image/png;base64,{{ d.metodo.img }}" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100">
+                    <div class="mb-4">
+                        <h5 class="fw-bold mb-1">K Sugerido: <span class="text-danger">{{ d.metodo.k_sugerido }}</span></h5>
+                        <p class="small text-muted">
+                            El punto de inflexión ("codo") se identifica en K={{ d.metodo.k_sugerido }}. 
+                            Actualmente estás ejecutando el modelo con <strong>K={{ current_k }}</strong>.
+                        </p>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6 class="fw-bold small mb-3 text-uppercase text-muted">Inercia por Clúster (WCSS):</h6>
+                    <div class="overflow-auto" style="max-height: 400px; padding-right: 10px;">
+                        {% for inercia in d.metodo.inercias %}
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1 small">
+                                <span class="fw-bold {% if loop.index == current_k %}text-primary{% endif %}">
+                                    K = {{ loop.index }}
+                                    {% if loop.index == current_k %}(Actual){% endif %}
+                                </span>
+                                <span class="text-muted">{{ "{:,}".format(inercia) }}</span>
+                            </div>
+                            <div class="progress" style="height: 6px; border-radius: 10px;">
+                                <div class="progress-bar {% if loop.index == current_k %}bg-primary{% else %}bg-secondary opacity-25{% endif %}" 
+                                     role="progressbar" 
+                                     style="width: {{ (inercia / d.metodo.inercias[0]) * 100 }}%">
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

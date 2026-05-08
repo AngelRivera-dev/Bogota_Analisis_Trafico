@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bogotá Traffic Intelligence</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+        </div>
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#inicio">Bogotá Traffic Intelligence</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="#descripcion">Problemática</a>
+                <a class="nav-link" href="#dataset">Dataset</a>
+                <a class="nav-link" href="#concepto">Conceptos K-means</a>
+                <a class="nav-link" href="#modelo">Modelo</a>
+                <a class="nav-link" href="#cluster">Clusters</a>
+                <a class="nav-link" href="#centroide">Centroides</a>
+                <a class="nav-link" href="#metodo">Metodo del Codo</a>
+                <a class="nav-link" href="#resultados">Resultados</a>
+            </div>
+        </div>
+    </nav>
+
+    {% include 'inicio.html' %}
+    {% include 'descripcion.html' %}
+    {% include 'dataset.html' %}
+    {% include 'concepto.html' %}
+    {% include 'modelo.html' %}
+    {% include 'cluster.html' %}
+    {% include 'centroide.html' %}
+    {% include 'metodo.html' %}
+    {% include 'resultados.html' %}
+
+    <section class="py-5 text-white" style="background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-3">Bogotá Traffic Intelligence</h2>
+           
+        </div>
+    </section>
+
+    <footer class="pt-5 pb-3 text-white" style="background-color: #0f172a; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}" class="footer-logo">
+
+                        <h5 class="fw-bold m-0">Bogotá Traffic Intelligence</h5>
+                    </div>
+                    <p class="small opacity-75 lh-lg">
+                        Investigación avanzada sobre la movilidad y accidentalidad en Bogotá. 
+                        Utilizando modelos de <strong>Machine Learning (K-Means)</strong> para segmentar patrones 
+                        críticos y fomentar una cultura de prevención vial basada en evidencia.
+                    </p>
+                </div>
+
+                <div class="col-md-4 text-md-center">
+                    <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Secciones</h6>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2"><a href="#inicio" class="text-white text-decoration-none hover-link">Inicio</a></li>
+                        <li class="mb-2"><a href="#metodo" class="text-white text-decoration-none hover-link">Método del Codo</a></li>
+                        <li class="mb-2"><a href="#modelo" class="text-white text-decoration-none hover-link">Ejecución Modelo</a></li>
+                        <li class="mb-2"><a href="#cluster" class="text-white text-decoration-none hover-link">Visualización</a></li>
+                        <li class="mb-2"><a href="#resultados" class="text-white text-decoration-none hover-link">Conclusiones</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 text-md-end">
+                    <h6 class="fw-bold mb-4 text-uppercase small" style="letter-spacing: 1px;">Tecnologías</h6>
+                    <ul class="list-unstyled small opacity-75">
+                        <li class="mb-2">Python + Flask <i class="bi bi-code-slash ms-2 text-primary"></i></li>
+                        <li class="mb-2">Scikit-Learn (K-Means) <i class="bi bi-gear-wide-connected ms-2 text-primary"></i></li>
+                        <li class="mb-2">Matplotlib & Seaborn <i class="bi bi-bar-chart-fill ms-2 text-primary"></i></li>
+                        <li class="mb-2">Bootstrap 5 <i class="bi bi-lightning-fill ms-2 text-primary"></i></li>
+                        <li class="mb-2">GitHub + Deployment <i class="bi bi-github ms-2 text-primary"></i></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr class="opacity-25">
+
+            <div class="d-flex justify-content-between align-items-center small opacity-50 pt-2">
+                <p class="m-0">© 2026 Inteligencia Vial Bogotá. Todos los derechos reservados.</p>
+                <p class="m-0">Proyecto Académico · Ciencia de Datos</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .hover-link:hover {
+            color: #3b82f6 !important;
+            padding-left: 5px;
+            transition: all 0.3s ease;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

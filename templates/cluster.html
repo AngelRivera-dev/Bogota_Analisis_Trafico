@@ -1,0 +1,48 @@
+<section id="cluster" class="py-5 bg-white">
+    <div class="container text-center">
+        <p class="text-primary fw-bold small text-uppercase">Segmentación</p>
+        <h2 class="fw-bold mb-4">Visualización de Clústeres</h2>
+        
+        <img src="data:image/png;base64,{{ d.cluster.img }}" class="img-fluid rounded-4 shadow mb-5" style="max-height: 500px;">
+
+        <div class="row g-4 text-start">
+            {% set info = [
+                ('Zona Segura', 'Baja densidad de incidentes.', '#440154'), 
+                ('Riesgo Bajo', 'Incidentes moderados en horas valle.', '#3b528b'),
+                ('Riesgo Medio', 'Frecuencia constante en vías principales.', '#21918c'),
+                ('Riesgo Alto', 'Alta concentración en horas pico.', '#5ec962'),
+                ('Zona Crítica', 'Máximo riesgo de incidentes graves.', '#fde725')
+            ] %}
+
+            {% for i in range(current_k) %}
+                <div class="col-md">
+                    <div class="card border-0 shadow-sm h-100 p-3 border-top border-4" 
+                         style="border-color: {{ info[i][2] if i < 5 else '#3b82f6' }} !important;">
+                        
+                        <h6 class="fw-bold">
+                            {% if i < 5 %}
+                                {{ info[i][0] }}
+                            {% else %}
+                                Clúster {{ i }}
+                            {% endif %}
+                        </h6>
+                        
+                        <p class="small text-muted mb-2">
+                            {% if i < 5 %}
+                                {{ info[i][1] }}
+                            {% else %}
+                                Segmento adicional de datos detectado.
+                            {% endif %}
+                        </p>
+                        
+                        <div class="mt-auto pt-2 border-top">
+                            <span class="small text-dark">
+                                Incidentes: <strong>{{ d.cluster.conteo[i|string] if d.cluster.conteo[i|string] else 0 }}</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

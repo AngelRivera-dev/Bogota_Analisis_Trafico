@@ -1,0 +1,67 @@
+<section id="dataset" class="full-screen bg-light">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Exploración del Dataset</h2>
+        
+        <div class="row g-4 mb-5">
+            <div class="col-md-6">
+                <div class="info-card-equal shadow-sm bg-white p-5 rounded-4 h-100">
+                    <div class="text-center mb-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2830/2830305.png" alt="Movilidad" width="60">
+                    </div>
+
+                    <h4 class="fw-bold text-dark mb-3 text-center">Bitácora Vial 2025</h4>
+                    <p class="text-muted text-center">
+                        Este registro detalla la dinámica de movilidad en Bogotá. Los datos permiten segmentar incidentes para optimizar la respuesta de emergencias.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap gap-2 mt-4 justify-content-center">
+                        <span class="badge rounded-pill bg-primary-soft">📅 Fecha</span>
+                        <span class="badge rounded-pill bg-primary-soft">📍 Localidad</span>
+                        <span class="badge rounded-pill bg-primary-soft">📊 Cantidad</span>
+                    </div>
+
+                    <div class="mt-5 text-start">
+                        <h5 class="fw-bold mb-3">Variables Seleccionadas para el Análisis:</h5>
+                        <ul class="list-group list-group-flush bg-transparent">
+                            <li class="list-group-item bg-transparent px-0 border-light" style="text-align: justify;">
+                                <strong>Fecha y Hora:</strong> Cruciales para identificar ciclos de accidentalidad (horas pico vs. nocturnas).
+                            </li>
+                            <li class="list-group-item bg-transparent px-0 border-light" style="text-align: justify;">
+                                <strong>Localidad:</strong> Permite la segmentación geográfica de los incidentes.
+                            </li>
+                            <li class="list-group-item bg-transparent px-0 border-light" style="text-align: justify;">
+                                <strong>Tipo de Incidente:</strong> Clasifica los eventos (Choque, Atropello, Autolesionado).
+                            </li>
+                            <li class="list-group-item bg-transparent px-0 border-light" style="text-align: justify;">
+                                <strong>Cantidad (Cant.):</strong> Magnitud del incidente basada en el número de actores involucrados.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card-equal shadow-sm bg-white p-0 rounded-4 h-100 overflow-hidden">
+                    <img src="https://www.elespectador.com/resizer/v2/6SCV4BCQRRATZFRTRESR7O7BU4.JPG?auth=010512422d4ce51b0f313f76fe085ee410b1d150faa9329dd84f21fea2891e03&width=1110&height=739&smart=true&quality=60" 
+                         alt="Movilidad Bogotá" 
+                         class="img-fluid w-100 h-100" 
+                         style="object-fit: cover; min-height: 450px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="dashboard-table-container shadow-lg">
+                    <div class="table-header-custom d-flex justify-content-between align-items-center">
+                        <h5 class="m-0 text-secondary">Vista Previa de Registros</h5>
+                        <span class="badge bg-dark">10 Registros</span>
+                    </div>
+                    <div class="table-responsive table-right-aligned">
+                        {{ tabla | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

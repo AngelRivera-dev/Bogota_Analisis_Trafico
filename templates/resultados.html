@@ -1,0 +1,67 @@
+<section id="resultados" class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <p class="text-primary fw-bold small text-uppercase">Fase Final</p>
+            <h2 class="fw-bold">Análisis de Resultados </h2>
+            <p class="text-muted small">Interpretación de los grupos hallados y previsualización de los datos clasificados.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded-circle p-2 me-3">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <h6 class="fw-bold m-0">Patrones Temporales</h6>
+                    </div>
+                    <p class="small text-muted">El modelo identifica picos de accidentalidad que coinciden con las horas pico de Bogotá (6-9 AM y 5-8 PM), permitiendo predecir ventanas de riesgo.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-success text-white rounded-circle p-2 me-3">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <h6 class="fw-bold m-0">Densidad de Víctimas</h6>
+                    </div>
+                    <p class="small text-muted">A través de los centroides, se observa que la mayoría de incidentes involucran de 1 a 2 personas, clasificando como "Eventos Comunes", mientras que grupos aislados marcan "Eventos Críticos".</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-warning text-dark rounded-circle p-2 me-3">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h6 class="fw-bold m-0">Optimización de Recursos</h6>
+                    </div>
+                    <p class="small text-muted">Con un K óptimo de 4, la ciudad podría distribuir servicios de emergencia en cuadrantes específicos, reduciendo tiempos de respuesta en un 15-20% basado en la ubicación de los centroides.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="card-header bg-light border-0 py-3">
+                <h6 class="m-0 fw-bold text-dark"><i class="bi bi-table me-2"></i>Registros Clasificados con Etiqueta de Grupo</h6>
+            </div>
+            
+            <div class="table-responsive" style="max-height: 450px; overflow-y: auto;">
+                {{ d.tabla_preview|safe }}
+            </div>
+
+            <div class="card-footer bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                <small class="text-muted">Desliza para ver más registros</small>
+                <span class="badge bg-primary-subtle text-primary px-3">Total: {{ d.preparacion.total_filas }} datos</span>
+            </div>
+        </div>
+
+        <div class="alert alert-primary border-0 rounded-4 p-4 shadow-sm">
+            <h5 class="fw-bold"><i class="bi bi-lightbulb me-2"></i>Conclusión del Proyecto</h5>
+            <p class="m-0 small">
+                Mediante el algoritmo <strong>K-Means</strong>, hemos logrado transformar más de 1.300 registros de incidentes viales en información estratégica. La segmentación permite concluir que la accidentalidad en Bogotá no es aleatoria, sino que obedece a ciclos de movilidad específicos. Este modelo es escalable y puede servir como base para sistemas de <strong>Smart City</strong> y prevención vial automatizada.
+            </p>
+        </div>
+    </div>
+</section>

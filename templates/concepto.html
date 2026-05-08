@@ -1,0 +1,94 @@
+<section id="concepto" class="concepts-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="badge bg-primary px-3 py-2 rounded-pill mb-2">METODOLOGÍA</span>
+            <h1 class="fw-bold text-dark display-5">Fundamentos K-Means</h1>
+            <p class="text-muted mx-auto" style="max-width: 700px;">
+                Principales conceptos del algoritmo de clustering utilizado en este análisis
+            </p>
+        </div>
+        <div class="row justify-content-center mb-5">
+    <div class="col-md-10">
+        <div class="definition-callout">
+            <p class="m-0">
+                K-Means es un algoritmo de aprendizaje no supervisado que agrupa datos en K clústeres distintos, 
+                minimizando la suma de las distancias cuadradas entre cada punto y su centroide más cercano.
+            </p>
+        </div>
+    </div>
+</div>
+
+        <div class="concepts-grid mb-5">
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-geo-fill"></i></div>
+                <h3>Centroide</h3>
+                <p>El "corazón" del grupo. Es el promedio geográfico y temporal de todos los incidentes del clúster.</p>
+            </div>
+
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-rulers"></i></div>
+                <h3>Distancia</h3>
+                <p>Calculamos qué tan lejos está un choque de un centroide para decidir a qué grupo pertenece.</p>
+            </div>
+
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-magnet-fill"></i></div>
+                <h3>Inercia</h3>
+                <p>Indica qué tan "apretados" están los grupos. Queremos que los incidentes estén cerca de su centro.</p>
+            </div>
+
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-ui-checks"></i></div>
+                <h3>Asignación</h3>
+                <p>Es el momento donde el algoritmo decide: "Este incidente pertenece al Clúster A".</p>
+            </div>
+
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-arrow-repeat"></i></div>
+                <h3>Iteración</h3>
+                <p>El proceso se repite una y otra vez hasta que los grupos ya no cambian y son perfectos.</p>
+            </div>
+
+            <div class="concept-card card-blue">
+                <div class="icon-circle-sm"><i class="bi bi-collection-fill"></i></div>
+                <h3>Valor K</h3>
+                <p>Es el número mágico de grupos que queremos encontrar (ej. Zonas de riesgo alto, medio y bajo).</p>
+            </div>
+        </div>
+
+        <div class="process-wrapper mt-5">
+            <h3 class="text-center fw-bold mb-5">Algoritmo K-Means — Pasos</h3>
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h5>Inicialización</h5>
+                    <p>Selección aleatoria de K centroides.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h5>Asignación</h5>
+                    <p>Puntos se unen al centroide cercano.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h5>Actualización</h5>
+                    <p>Se recalcula el centro de cada grupo.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h5>Repetición</h5>
+                    <p>Se iteran los pasos hasta estabilizar.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <h5>Resultado</h5>
+                    <p>Clústeres finales listos para análisis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

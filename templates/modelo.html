@@ -1,0 +1,117 @@
+<section id="modelo" class="py-5 bg-light">
+    <div class="container">
+        <div class="card border-0 shadow-sm p-4 mb-5 rounded-4 bg-white">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h5 class="fw-bold m-0 text-dark">Configuración del Hiperparámetro K</h5>
+                    <p class="text-muted small m-0">Define el número de grupos para el algoritmo.</p>
+                </div>
+                <div class="col-md-4">
+                    <form action="/" method="GET" class="d-flex gap-2">
+                        <input type="number" name="k" class="form-control" value="{{ current_k }}" min="1" max="10">
+                        <button type="submit" class="btn btn-primary px-4 shadow-sm">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <p class="text-primary fw-bold small text-uppercase">Entrenamiento</p>
+            <h2 class="fw-bold">Ejecución del Modelo</h2>
+            <p class="text-muted">Configuración, parámetros y evolución del entrenamiento del modelo K-Means</p>
+        </div>
+
+        <div class="row g-3 mb-5 text-center">
+            {% set params = [
+                ('Algoritmo', d.modelo_params.algoritmo), 
+                ('K (clústeres)', current_k), 
+                ('Inicialización', d.modelo_params.init), 
+                ('Max Iteraciones', d.modelo_params.max_iter), 
+                ('Tolerancia', d.modelo_params.tolerancia), 
+                ('Inercia Final', d.modelo_params.inercia_final)
+            ] %}
+            {% for titulo, valor in params %}
+            <div class="col-6 col-md-2">
+                <div class="card border-0 shadow-sm p-3 h-100 rounded-3">
+                    <p class="small text-muted mb-1" style="font-size: 0.75rem;">{{ titulo }}</p>
+                    <h6 class="fw-bold m-0 text-dark">{{ valor }}</h6>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="p-4 bg-white border-bottom d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold m-0" style="font-size: 1rem;">Evolución de iteraciones</h5>
+                <div class="small">
+                    <span class="text-muted me-3">Silhouette: <strong class="text-primary">0.68</strong></span>
+                    <span class="text-muted">Tiempo: <strong class="text-success">1.23 segundos</strong></span>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover m-0 align-middle">
+                    <thead class="bg-light">
+                        <tr class="small text-muted text-uppercase">
+                            <th class="ps-4">Iteración</th>
+                            <th>Inercia</th>
+                            <th>Movimiento Centroides</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fila in d.evolucion %}
+                        <tr>
+                            <td class="ps-4 fw-bold text-dark">{{ fila.iter }}</td>
+                            <td class="text-muted">{{ "{:,}".format(fila.inercia) }}</td>
+                            <td class="text-muted">{{ fila.mov }}</td>
+                            <td>
+                                <span class="badge rounded-pill 
+                                    {% if fila.estado == 'Finalizado' %} bg-success-subtle text-success 
+                                    {% elif fila.estado == 'Inicialización' %} bg-secondary-subtle text-secondary 
+                                    {% else %} bg-warning-subtle text-warning {% endif %} px-3">
+                                    {{ fila.estado }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="p-4 bg-white border-bottom">
+                <h5 class="fw-bold m-0" style="font-size: 1rem;">Características de entrada</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover m-0 align-middle">
+                    <thead class="bg-light">
+                        <tr class="small text-muted text-uppercase">
+                            <th class="ps-4">Feature</th>
+                            <th>Tipo</th>
+                            <th>Rango</th>
+                            <th>Descripción</th>
+                            <th>Escalado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ps-4 fw-bold text-dark">hora</td>
+                            <td><span class="badge bg-light text-dark border">numérica</span></td>
+                            <td class="text-muted">0-23</td>
+                            <td class="text-muted">Hora del día del incidente</td>
+                            <td><span class="text-primary small">StandardScaler</span></td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-bold text-dark">implicados</td>
+                            <td><span class="badge bg-light text-dark border">numérica</span></td>
+                            <td class="text-muted">1-{{ d.cluster.conteo.values()|max }}</td>
+                            <td class="text-muted">Total de personas involucradas</td>
+                            <td><span class="text-primary small">StandardScaler</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

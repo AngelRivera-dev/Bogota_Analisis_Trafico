@@ -1,0 +1,523 @@
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+        }
+
+        .full-screen {
+            width: 100%;
+            min-height: 100vh !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 80px 20px;
+        }
+
+        #inicio {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        #inicio h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        #inicio p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn-empecemos {
+            background-color: #0d6efd;
+            color: white !important;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-empecemos:hover {
+            background-color: #0b5ed7;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        #descripcion {
+            background-color: #ffffff;
+            color: #2c3e50;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .hero-title {
+            font-size: clamp(40px, 8vw, 90px);
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 1.1;
+            letter-spacing: 1px;
+            
+        }
+        .highlight {
+            color: #2297e6; 
+        }
+        .centrado {
+        text-align: center;
+        }
+        #inicio p {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+
+        }
+        .full-screen {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center; /
+        }
+
+        .hero-content p {
+            max-width: 800px;
+            margin: 20px auto; 
+            font-size: 1.2rem;
+        }
+        /* ESTILO DESCRIPCION*/
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-transform: none; 
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: #6c757d;
+            line-height: 1.8;
+        }
+
+        h4.fw-bold {
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        @media (min-width: 768px) {
+            .border-start { border-left: 1px solid #dee2e6 !important; }
+            .border-end { border-right: 1px solid #dee2e6 !important; }
+        }
+
+        .full-screen .container {
+            max-width: 1100px;
+        }
+
+        /* TARJETAS DESCRIPCION*/
+                .dataset-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 38px;
+        }
+
+        .dataset-summary-card {
+            background: #fafafa;
+            border: 1px solid #e8e8ec;
+            border-radius: 16px;
+            padding: 18px 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .summary-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .summary-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+      
+
+        .summary-blue {
+            background: #c4e4ff;
+            color: #0084f7db;
+        }
+
+        .summary-green {
+            background: #e3f7ed;
+            color: #096741;
+        }
+
+    
+
+        .summary-info h3 {
+            margin: 0 0 4px;
+            font-size: 17px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .summary-info p {
+            margin: 0;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* FIN DESCRIPCION*/
+
+
+/* --- ESTILOS PARA DATASET (MODERNO) --- */
+
+.dataset-info-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #eef2f6;
+}
+
+.bg-primary-soft {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.dashboard-table-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    border: 1px solid #dee2e6;
+}
+
+.table-header-custom {
+    background: #f8f9fa;
+    padding: 15px 25px;
+    border-bottom: 1px solid #dee2e6;
+    color: #334155;
+}
+
+.dashboard-table-container .table {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.dashboard-table-container thead th {
+    background-color: #ffffff !important;
+    color: #64748b !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 15px 25px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.dashboard-table-container tbody td {
+    padding: 12px 25px;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.dashboard-table-container tbody tr:hover {
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+.info-card-equal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #eef2f6;
+    transition: transform 0.3s ease;
+}
+
+.info-card-equal:hover {
+    transform: translateY(-5px);
+}
+
+.table-right-aligned .table td, 
+.table-right-aligned .table th {
+    text-align: right !important;
+    padding-right: 25px;
+    vertical-align: middle;
+}
+
+.bg-primary-soft {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    padding: 8px 15px;
+    font-weight: 600;
+}
+
+.dashboard-table-container {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+}
+.list-group-item {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4b5563; 
+}
+
+.list-group-item:not(:last-child) {
+    border-bottom: 1px solid #f3f4f6 !important;
+}
+
+.justify-content-center {
+    margin-bottom: 1.5rem;
+}
+
+
+
+
+/* CONCEPTOS */
+.concepts-section {
+    width: 100%;
+    min-height: 100vh !important; /* Mantiene la separación de "una página" */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    background-color: #ffffff;
+}
+/* Grilla de 3 columnas para las 6 tarjetas */
+.concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+/* Contenedor de Pasos (Timeline) */
+.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* Tarjetas Individuales */
+.concept-card {
+    background: white;
+    border: 1px solid #f0f2f5;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .concepts-grid { grid-template-columns: 1fr; }
+    .steps-container { flex-direction: column; align-items: center; }
+    .step-line { display: none; }
+}
+/* --- ESTILOS DE CONCEPTOS (COLORES DIFERENTES) --- */
+.concepts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.concept-card {
+    padding: 30px;
+    border-radius: 24px;
+    border: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Colores de fondo suaves para cada tarjeta */
+.card-blue { background-color: #f0f7ff; }
+.card-purple { background-color: #f5f3ff; }
+.card-green { background-color: #f0fdf4; }
+.card-orange { background-color: #fff7ed; }
+.card-red { background-color: #fef2f2; }
+.card-teal { background-color: #f0fdfa; }
+
+.concept-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.concept-card h3 { font-size: 1.3rem; font-weight: 700; margin-top: 15px; color: #1e293b; }
+.concept-card p { font-size: 0.95rem; color: #475569; margin-bottom: 0; }
+
+.icon-circle-sm {
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    background: white; font-size: 1.2rem; color: #3b82f6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- PASOS CON CÍRCULO AZUL --- */
+.steps-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step-box { text-align: center; z-index: 2; }
+
+
+
+.step-box h6 { font-weight: 700; color: #1e293b; font-size: 0.9rem; }
+
+.step-connector {
+    flex: 1; height: 3px;
+    background: #e2e8f0;
+    margin-bottom: 35px; /* Ajuste para alinear con el círculo */
+    z-index: 1;
+}
+/* --- ESTILO DE LOS CÍRCULOS PARA LOS PASOS --- */
+.step-number {
+    width: 55px;         /* Ancho del círculo */
+    height: 55px;        /* Alto del círculo */
+    background: #3b82f6; /* Azul vibrante */
+    color: white;        /* Color del número */
+    border-radius: 50%;  /* Esto lo hace circular */
+    display: flex;       /* Centra el número horizontalmente */
+    align-items: center; /* Centra el número verticalmente */
+    justify-content: center;
+    font-size: 1.4rem;   /* Tamaño del número */
+    font-weight: 800;    /* Grosor del número */
+    margin: 0 auto 15px; /* Centra el círculo y da espacio abajo */
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4); /* Sombra azulada */
+    border: 3px solid white; /* Borde blanco para resaltar */
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajuste opcional para las líneas conectoras */
+.step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #e2e8f0;
+    margin-top: 28px; /* Ajusta esto para que la línea quede a mitad del círculo */
+    z-index: 1;
+}
+
+/* Asegura que los ítems estén bien alineados */
+.step-item {
+    text-align: center;
+    flex: 1;
+}
+/* --- CUADRO DE DEFINICIÓN OSCURO (Imagen b54e75) --- */
+.definition-callout {
+    background-color: #0b1a2a; /* Azul noche muy oscuro */
+    color: #ffffff;            /* Texto blanco puro */
+    padding: 40px 60px;        /* Espaciado interno generoso */
+    border-radius: 20px;       /* Bordes muy redondeados */
+    text-align: center;        /* Centrado de texto */
+    font-size: 1.15rem;        /* Tamaño de letra legible */
+    line-height: 1.6;          /* Interlineado cómodo */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra para dar profundidad */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde casi invisible */
+}
+
+/* Ajuste para que se vea bien en móviles */
+@media (max-width: 768px) {
+    .definition-callout {
+        padding: 25px 30px;
+        font-size: 1rem;
+    }
+}
+/* Estilo para la barra de desplazamiento (Scrollbar) */
+    .table-responsive::-webkit-scrollbar {
+        width: 8px;
+    }
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 10px;
+    }
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #2563eb;
+    }
+
+    /* Estilo de la tabla */
+    .table thead {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #f8f9fa;
+    }
+    .table thead th {
+        border-bottom: 2px solid #dee2e6;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #495057;
+        padding: 15px;
+    }
+    /* Resaltado del Grupo/Centroide */
+    .table td:last-child {
+        font-weight: bold;
+        color: #3b82f6;
+        background-color: #f0f7ff;
+    }
+    
+.logo img {
+    width: 100px;
+}
+.footer-logo {
+  width: 50px;
+  margin-bottom: 20px;
+}
