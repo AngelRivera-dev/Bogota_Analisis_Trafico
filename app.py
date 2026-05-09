@@ -23,7 +23,6 @@ app = Flask(__name__)
 # Configuración del Dataset
 URL_GITHUB = "https://raw.githubusercontent.com/Dany601/Datasets901/refs/heads/main/incidentes.csv"
 
-
 df_cache = None
 
 def obtener_datos():
@@ -93,11 +92,30 @@ def procesar_dashboard(k_usuario):
         plt.legend()
         img_metodo = fig_to_base64(plt)
 
-        #  K-MEANS FINAL
+        # K-MEANS FINAL
         kmeans_final = KMeans(n_clusters=k_usuario, init='k-means++', max_iter=300, random_state=42, n_init=10)
         df_clean['Cluster'] = kmeans_final.fit_predict(X_scaled)
         df_clean['Cluster_Label'] = df_clean['Cluster'].apply(lambda x: f'Grupo {x}')
         
+        # --- SOLUCIÓN A TU DUDA: LAS DOS TABLAS ---
+
+        # 1. TABLA ORIGINAL (Para Exploración): Quitamos las columnas del modelo
+        # Usamos errors='ignore' por si aún no se han creado
+        tabla_original_html = df_clean.drop(columns=['Cluster', 'Cluster_Label', 'Hora_DT', 'Hora_Num'], errors='ignore').head(10).to_html(
+            classes='table table-hover align-middle m-0', 
+            index=False, 
+            border=0
+        )
+
+        # 2. TABLA DE RESULTADOS (Con Clústeres): Mostramos todo
+        # Seleccionamos solo las columnas más importantes para que se vea bien en el scroll
+        columnas_res = ['Fecha incidente', 'Hora', 'Localidad', 'Total_Implicados', 'Cluster_Label']
+        tabla_resultados_html = df_clean[columnas_res].sample(n=min(2000, len(df_clean))).to_html(
+            classes='table table-hover align-middle m-0', 
+            index=False, 
+            border=0
+        )
+
         # Gráfica Clústeres 
         orden_leyenda = [f'Grupo {i}' for i in range(k_usuario)]
         jitter_x = df_clean['Hora_Num'] + np.random.uniform(-0.3, 0.3, len(df_clean))
@@ -117,38 +135,20 @@ def procesar_dashboard(k_usuario):
         plt.scatter(centroids[:, 0], centroids[:, 1], c='red', marker='*', s=350, edgecolor='black', label='Centroides')
         plt.title('Localización de Centroides')
         img_centroide = fig_to_base64(plt)
-
-        #  TABLA DE RESULTADOS
-        columnas_tab = ['Fecha incidente', 'Hora', 'Localidad', 'Total_Implicados', 'Cluster_Label']
-        tabla_html = df_clean[columnas_tab].sample(n=min(2000, len(df_clean))).to_html(
-            classes='table table-hover align-middle m-0', 
-            index=False, 
-            border=0
-        )
-
         
+        # EVOLUCIÓN
         num_pasos = kmeans_final.n_iter_
         evolucion_lista = []
         for i in range(num_pasos + 1):
             factor = (num_pasos - i) / num_pasos if num_pasos > 0 else 0
             inercia_paso = int(kmeans_final.inertia_ * (1 + factor * 0.4))
-            
-            if i == 0:
-                estado, mov = "Inicialización", "N/A"
-            elif i == num_pasos:
-                estado, mov, inercia_paso = "Finalizado", "0", int(kmeans_final.inertia_)
-            else:
-                estado, mov = "Convergiendo", f"{round(np.random.uniform(0.1, 1.2), 3)}"
-            
-            evolucion_lista.append({
-                "iter": i, 
-                "inercia": inercia_paso, 
-                "mov": mov, 
-                "estado": estado
-            })
+            estado = "Finalizado" if i == num_pasos else ("Inicialización" if i == 0 else "Convergiendo")
+            mov = "0" if i == num_pasos else ("N/A" if i == 0 else f"{round(np.random.uniform(0.1, 1.2), 3)}")
+            evolucion_lista.append({"iter": i, "inercia": inercia_paso, "mov": mov, "estado": estado})
 
         return {
-            "tabla_preview": tabla_html,
+            "tabla_original": tabla_original_html,
+            "tabla_preview": tabla_resultados_html,
             "metodo": {"img": img_metodo, "inercias": wcss, "k_sugerido": k_sugerido},
             "cluster": {"img": img_cluster, "conteo": df_clean['Cluster'].value_counts().to_dict()},
             "centroide": {"img": img_centroide},
@@ -179,5 +179,4 @@ def index():
     return "Error al procesar datos."
 
 if __name__ == '__main__':
-    Timer(1, lambda: webbrowser.open_new('http://127.0.0.1:5000/')).start()
-    app.run(debug=True, port=5000)
+    app.run()
