@@ -290,38 +290,6 @@ def index():
         return render_template('index.html', d=dashboard_data, spark=spark_data, current_k=k_val)
     return "Error al procesar datos."
 
-@app.route('/spark')
-def resultadosSpark():
-    # 1. Iniciar temporizador
-    inicio = time.time()
-
-    try:
-        # 2. Ejecutar todo el procesamiento de PySpark / pandas
-        resultados = obtener_resultados()
-
-        # 3. Detener temporizador
-        fin = time.time()
-        tiempo_ejecucion = fin - inicio
-        print(f"\n--- TIEMPO DE EJECUCIÓN PYSPARK: {tiempo_ejecucion} segundos ---\n")
-
-        # 4. Actualización de las variables enviadas al template
-        return render_template(
-            "spark.html",
-            incidentes_localidad=resultados.get("incidentes_localidad", []),
-            incidentes_vehiculo=resultados.get("incidentes_vehiculo", []),
-            incidentes_clima=resultados.get("incidentes_clima", [])
-        )
-    except Exception as e:
-        print(f"LOG app.py - resultadosSpark error: {e}")
-        return render_template(
-            "spark.html",
-            incidentes_localidad=[],
-            incidentes_vehiculo=[],
-            incidentes_clima=[],
-            error_msg=str(e)
-        )
-
-
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
