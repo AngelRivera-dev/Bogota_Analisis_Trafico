@@ -57,6 +57,123 @@
             </div>
         </div>
 
+        <section id="spark" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <p class="text-primary fw-bold small text-uppercase">PySpark</p>
+                    <h2 class="fw-bold">Análisis de Incidentes en la Misma Página</h2>
+                    <p class="text-muted small">Aquí se muestran los resultados de procesamiento de datos junto con el dashboard principal.</p>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                            <h6 class="fw-bold">Localidades</h6>
+                            <p class="display-5 mb-0">{{ spark.incidentes_localidad|length }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                            <h6 class="fw-bold">Tipos de Vehículo</h6>
+                            <p class="display-5 mb-0">{{ spark.incidentes_vehiculo|length }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm p-4 h-100 bg-light">
+                            <h6 class="fw-bold">Condiciones Climáticas</h6>
+                            <p class="display-5 mb-0">{{ spark.incidentes_clima|length }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0 py-3">
+                                <h6 class="m-0 fw-bold">Incidentes por Localidad</h6>
+                            </div>
+                            <div class="table-responsive p-3" style="max-height: 320px; overflow-y: auto;">
+                                <table class="table table-sm table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Localidad</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in spark.incidentes_localidad[:10] %}
+                                        <tr>
+                                            <td>{{ row.Localidad if row.Localidad is defined else row['Localidad'] }}</td>
+                                            <td>{{ row.total_incidentes }}</td>
+                                        </tr>
+                                        {% else %}
+                                        <tr><td colspan="2">No hay datos disponibles.</td></tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0 py-3">
+                                <h6 class="m-0 fw-bold">Incidentes por Tipo de Vehículo</h6>
+                            </div>
+                            <div class="table-responsive p-3" style="max-height: 320px; overflow-y: auto;">
+                                <table class="table table-sm table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo Vehículo</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in spark.incidentes_vehiculo[:10] %}
+                                        <tr>
+                                            <td>{{ row.TipoVehiculo if row.TipoVehiculo is defined else row['TipoVehiculo'] }}</td>
+                                            <td>{{ row.total_incidentes }}</td>
+                                        </tr>
+                                        {% else %}
+                                        <tr><td colspan="2">No hay datos disponibles.</td></tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-header bg-white border-0 py-3">
+                                <h6 class="m-0 fw-bold">Incidentes por Clima</h6>
+                            </div>
+                            <div class="table-responsive p-3" style="max-height: 320px; overflow-y: auto;">
+                                <table class="table table-sm table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Condición</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in spark.incidentes_clima[:10] %}
+                                        <tr>
+                                            <td>{{ row.CondicionClimatica if row.CondicionClimatica is defined else row['CondicionClimatica'] }}</td>
+                                            <td>{{ row.total_incidentes }}</td>
+                                        </tr>
+                                        {% else %}
+                                        <tr><td colspan="2">No hay datos disponibles.</td></tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="alert alert-primary border-0 rounded-4 p-4 shadow-sm">
             <h5 class="fw-bold"><i class="bi bi-lightbulb me-2"></i>Conclusión del Proyecto</h5>
             <p class="m-0 small">

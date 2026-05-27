@@ -279,12 +279,15 @@ def procesar_dashboard(k_usuario):
 @app.route('/')
 def index():
     k_val = request.args.get('k', default=5, type=int)
-    if k_val < 1: k_val = 1
-    if k_val > 10: k_val = 10
-    
+    if k_val < 1:
+        k_val = 1
+    if k_val > 10:
+        k_val = 10
+
     dashboard_data = procesar_dashboard(k_val)
-    if dashboard_data:
-        return render_template('index.html', d=dashboard_data, current_k=k_val)
+    spark_data = obtener_resultados()
+    if dashboard_data is not None:
+        return render_template('index.html', d=dashboard_data, spark=spark_data, current_k=k_val)
     return "Error al procesar datos."
 
 @app.route('/spark')
