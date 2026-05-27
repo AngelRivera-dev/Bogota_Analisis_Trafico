@@ -59,9 +59,16 @@ def obtener_datos():
             cols_keep = [c for c in COLS_DISPLAY if c in df.columns] + ['Hora_Num']
             df = df[cols_keep].copy()
 
+            # ---------------------------------------------------------
+            # NUEVO CÓDIGO: Reducción de dimensionalidad (Submuestreo)
+            # ---------------------------------------------------------
+            if len(df) > 10000:
+                df = df.sample(n=10000, random_state=42)
+                print("LOG: Muestreo aleatorio aplicado: Reducido a 10,000 registros para optimizar CPU.")
+
             df_cache = df
             gc.collect()
-            print(f"LOG: Datos cargados ({len(df)} registros, {df.memory_usage(deep=True).sum() // 1024} KB).")
+            print(f"LOG: Datos cargados en caché ({len(df)} registros, {df.memory_usage(deep=True).sum() // 1024} KB).")
         except Exception as e:
             print(f"LOG: Error crítico: {e}")
             return None
